@@ -3,16 +3,19 @@ module Kaminari
     # a workaround for AR 3.0.x that returns 0 for #count when page > 1
     # if +limit_value+ is specified, load all the records and count them
     if ActiveRecord::VERSION::STRING < '3.1'
+      binding.pry
       def count(column_name = nil, options = {}) #:nodoc:
         limit_value && !options[:distinct] ? length : super(column_name, options)
       end
     end
 
     def entry_name
+      binding.pry
       model_name.human.downcase
     end
 
     def reset #:nodoc:
+      binding.pry
       @total_count = nil
       super
     end
